@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konete Watch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle farthest-side at 0% 50%,
+                    #282828 23.5%,
+                    rgba(255, 170, 0, 0) 0) 21px 30px,
+                radial-gradient(circle farthest-side at 0% 50%,
+                    #2c3539 24%,
+                    rgba(240, 166, 17, 0) 0) 19px 30px,
+                linear-gradient(#282828 14%,
+                    rgba(240, 166, 17, 0) 0,
+                    rgba(240, 166, 17, 0) 85%,
+                    #282828 0) 0 0,
+                linear-gradient(150deg,
+                    #282828 24%,
+                    #2c3539 0,
+                    #2c3539 26%,
+                    rgba(240, 166, 17, 0) 0,
+                    rgba(240, 166, 17, 0) 74%,
+                    #2c3539 0,
+                    #2c3539 76%,
+                    #282828 0) 0 0,
+                linear-gradient(30deg,
+                    #282828 24%,
+                    #2c3539 0,
+                    #2c3539 26%,
+                    rgba(240, 166, 17, 0) 0,
+                    rgba(240, 166, 17, 0) 74%,
+                    #2c3539 0,
+                    #2c3539 76%,
+                    #282828 0) 0 0,
+                linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0%) 0 0 #282828;
+            background-size: 40px 60px;
+        }
+
+        .navbar {
+            background-color: #004225;
+        }
+
+        .navbar-brand,
+        .nav-link,
+        .navbar-toggler-icon {
+            color: white;
+        }
+
+        .explore-section {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 50px 0;
+            animation: slideInUp 1s ease-in-out;
+        }
+
+        .explore-section h2 {
+            color: #004225;
+        }
+
+        .explore-section p {
+            color: #6c757d;
+        }
+
+        .explore-section .btn {
+            background-color: #004225;
+            color: white;
+        }
+
+        .watch-section {
+            text-align: center;
+            padding: 50px 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            margin-bottom: 30px;
+
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .card-body h5 {
+            color: #004225;
+        }
+
+        .card-body p {
+            color: #6c757d;
+        }
+
+        .gallery-section {
+            padding: 50px 0;
+            background-color: #f8f9fa;
+        }
+
+        .gallery-section h2 {
+            text-align: center;
+            color: #004225;
+            margin-bottom: 30px;
+        }
+
+        .gallery-section img {
+            width: 100%;
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-section img:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+            animation: slideInUp 1s ease-in-out;
+        }
+
+        .footer a {
+            color: #004225;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #6c757d;
+        }
+
+        .footer .social-icons a {
+            margin: 0 10px;
+            color: #004225;
+        }
+
+        .footer .social-icons a:hover {
+            color: #6c757d;
+        }
+
+        .footer-bottom {
+            background-color: #004225;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .l1 {
+            margin-top: 10px;
+        }
+
+        .button1 {
+            padding: 1.3em 2.2em;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 500;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 45px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .button1:hover {
+            background-color: #23c483;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+
+        .button1:active {
+            transform: translateY(-1px);
+        }
+
+        .button2 {
+            padding: 1.3em 3em;
+            margin: 4px;
+            width: 10rem;
+            text-align: center;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 500;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 45px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .button2:hover {
+            background-color: #23c483;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+
+        .button2:active {
+            transform: translateY(-1px);
+        }
+
+        a {
+
+            text-decoration: none;
+        }
+
+        .l2 {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body class="container2">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="image/Watch_Your_Watches-logo-A92C33E198-seeklogo.com.png" alt="konete watch" width="50">
+                Konete Watch</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link button2" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link button2" href="product.html?category=all">Watch</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link button2" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link button2" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <section class=" l3" id="hero">
+
+
+        <div class="container" style="
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        ">
+
+        </div>
+    </section>
+    ">
+    <img src="image/Untitled-1.jpg" alt="Konete watches" style="
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                background-position: center;
+                filter: brightness(1.2);
+
+                ">
+    </div>
+
+    </div>
+    </section>
+    <section class="explore-section" id="explore">
+        <div class="container">
+            <h2>Explore the Konete collection</h2>
+            <p>Discover the wide range of Konete watches to find the perfect one for you.</p>
+            <div aria-label="Basic example" class="btn-group mb-4" role="group">
+                <a href="product.html?category=all" class="btn button1" role="button">All</a>
+                <a href="product.html?category=men" class="btn button1" role="button">Men</a>
+                <a href="product.html?category=women" class="btn button1" role="button">Women</a>
+                <a href="product.html?category=new" class="btn button1" role="button">New</a>
+            </div>
+        </div>
+    </section>
+    <section class="watch-section">
+        <div class="container">
+            <div class="row justify-content-center" id="watch-cards">
+                <div class="col-md-6 col-lg-4 watch-card" data-category="men">
+                    <a href="product.html?category=men">
+                        <div class="card">
+                            <img alt="Konete watch 1" class="card-img-top" src="image/1.png" />
+                            <div class="card-body">
+                                <h5 class="card-title">Sveston</h5>
+                                <p class="card-text">Sveston Onyx SV-7526-M</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-lg-4 watch-card" data-category="men">
+                    <a href="product.html?category=men">
+                        <div class="card">
+                            <img alt="Konete watch 2" class="card-img-top" src="image/3.png" />
+                            <div class="card-body">
+                                <h5 class="card-title">Sveston</h5>
+                                <p class="card-text">Luxury watch with date display</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col-md-6 col-lg-4 watch-card" data-category="men">
+                    <a href="product.html?category=men">
+                        <div class="card">
+                            <img alt="Konete watch 2" class="card-img-top" src="image/6.png" />
+                            <div class="card-body">
+                                <h5 class="card-title">Sveston</h5>
+                                <p class="card-text">
+                                    Festival watch with date display
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4 watch-card" data-category="new">
+                    <a href="product.html?category=women">
+                        <div class="card">
+                            <img alt="Konete watch 4" class="card-img-top" src="image/13.png" />
+                            <div class="card-body">
+                                <h5 class="card-title">ORIS</h5>
+                                <p class="card-text">
+
+                                    Timepiece with date display
+
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4 watch-card" data-category="new">
+                    <a href="product.html?category=women">
+                        <div class="card">
+                            <img alt="Konete watch 4" class="card-img-top" src="image/12.png" />
+                            <div class="card-body">
+                                <h5 class="card-title">RADO</h5>
+                                <p class="card-text">
+                                    rado beatiful watch
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-4 watch-card" data-category="new">
+                    <a href="product.html?category=women">
+                        <div class="card">
+                            <img alt="Konete watch 4" class="card-img-top" src="image/9.png" />
+                            <div class="card-body">
+                                <h5 class="card-title">RADO</h5>
+                                <p class="card-text">
+                                    Square Classic watch
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="container " id="watch">
+            <h2>Watch Gallery</h2>
+            <div class="row justify-content-center ">
+                <div class="col-md-4 l2">
+                    <img alt="Gallery image 1" src="image/g1.jpg" />
+                </div>
+                <div class="col-md-4 l2">
+                    <img alt="Gallery image 2" src="image/g2.jpg" />
+                </div>
+                <div class="col-md-4 l2">
+                    <img alt="Gallery image 3" src="image/g3.jpg" />
+                </div>
+            </div>
+            <div class="row justify-content-center l1">
+                <div class="col-md-4 l2">
+                    <img alt="Gallery image 4" src="image/g4.jpg" width="100%" />
+                </div>
+                <div class="col-md-4 l2">
+                    <img alt="Gallery image 5" src="image/g5.jpg" width="100%" />
+                </div>
+                <div class="col-md-4 l2">
+                    <img alt="Gallery image 6" src="image/g6.jpg" width="100%" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5>Konete</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#hero">Home</a></li>
+                        <li><a href="#explore">Collection</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Products</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Submariner</a></li>
+                        <li><a href="#">Day-Date</a></li>
+                        <li><a href="#">Yacht-Master</a></li>
+                        <li><a href="#">Air-King</a></li>
+                        <li><a href="#">Sky-Dweller</a></li>
+                        <li><a href="#">Lady-Datejust</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Support</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Customer Service</a></li>
+                        <li><a href="#">Warranty</a></li>
+                        <li><a href="#">Manuals</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5>Follow Us</h5>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="footer-bottom">
+        <div class="container">
+            <p>© 2023 Konete. All rights reserved.</p>
+        </div>
+    </div>
+    <script crossorigin="anonymous" integrity="sha384-oBqDVmMz4fnFO9gybBogGzOgQpeKBmBI4rLC5D8I6w5p60bK5R0pG5j6N6p6F5cv"
+        src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous"
+        integrity="sha384-pprn3073KE6tl6jvKK1B0g6B0f1pHA5lG1lZ9g1EN5z5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5p5"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtered Products</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Add your CSS styles here */
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            margin-bottom: 30px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .navbar {
+            background-color: #004225;
+        }
+
+        .navbar-brand,
+        .nav-link,
+        .navbar-toggler-icon {
+            color: white;
+        }
+
+        .hero-section {
+            background-image: url('https://placehold.co/1920x1080');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .explore-section {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 50px 0;
+            animation: slideInUp 1s ease-in-out;
+        }
+
+        .explore-section h2 {
+            color: #004225;
+        }
+
+        .explore-section p {
+            color: #6c757d;
+        }
+
+        .explore-section .btn {
+            background-color: #004225;
+            color: white;
+        }
+
+        .watch-section {
+            text-align: center;
+            padding: 50px 0;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            margin-bottom: 30px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .card-body h5 {
+            color: #004225;
+        }
+
+        .card-body p {
+            color: #6c757d;
+        }
+
+        .gallery-section {
+            padding: 50px 0;
+            background-color: #f8f9fa;
+        }
+
+        .gallery-section h2 {
+            text-align: center;
+            color: #004225;
+            margin-bottom: 30px;
+        }
+
+        .gallery-section img {
+            width: 100%;
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery-section img:hover {
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+            animation: slideInUp 1s ease-in-out;
+        }
+
+        .footer a {
+            color: #004225;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #6c757d;
+        }
+
+        .footer .social-icons a {
+            margin: 0 10px;
+            color: #004225;
+        }
+
+        .footer .social-icons a:hover {
+            color: #6c757d;
+        }
+
+        .footer-bottom {
+            background-color: #004225;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(100%);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .l1 {
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 1.3em 3em;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 500;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 45px;
+            box-shadow: 0px 8px 10px rgb(15, 77, 0);
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            outline: none;
+
+        }
+
+        .button:hover {
+            background-color: #23c483;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+
+        .button:active {
+            transform: translateY(-1px);
+        }
+
+        /* From Uiverse.io by escannord */
+        .container2 {
+            width: 100%;
+            height: 100%;
+            /* Add your background pattern here */
+            background: rgba(29, 31, 32, 0.904) radial-gradient(rgba(255, 255, 255, 0.712) 10%, transparent 1%);
+
+            background-size: 11px 11px;
+        }
+
+        .button1 {
+            padding: 1.3em 2.2em;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 500;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 45px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .button1:hover {
+            background-color: #23c483;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+
+        .button1:active {
+            transform: translateY(-1px);
+        }
+
+        .button2 {
+            padding: 1.3em 3em;
+            margin: 4px;
+            width: 10rem;
+            text-align: center;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 500;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 45px;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .button2:hover {
+            background-color: #23c483;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+
+        .button2:active {
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+
+<body class="container2">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="image/Watch_Your_Watches-logo-A92C33E198-seeklogo.com.png" alt="konete watch" width="50">
+                Konete Watch</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link button2" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link button2" href="product.html?category=all">Watch</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link button2" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link button2" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <section class="explore-section" id="explore">
+        <div class="container">
+            <h2>Explore the Konete collection</h2>
+            <p>Discover the wide range of Konete watches to find the perfect one for you.</p>
+            <div aria-label="Basic example" class="btn-group mb-4" role="group">
+                <a href="product.html?category=all" class="btn button1" role="button">All</a>
+                <a href="product.html?category=men" class="btn button1" role="button">Men</a>
+                <a href="product.html?category=women" class="btn button1" role="button">Women</a>
+                <a href="product.html?category=new" class="btn button1" role="button">New</a>
+            </div>
+        </div>
+    </section>
+    <div class="container mt-5">
+        <!-- Cards Container -->
+        <div id="watch-cards" class="row">
+            <!-- Watch cards will be generated by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Sample watch data
+        const watches = [
+            { title: "Sveston Onyx SV-7526-M", img: "image/1.png", price: 11499, category: "men" },
+            { title: "SVESTON BULLSTON", img: "image/2.png", price: 9459, category: "men" },
+            { title: "Sveston ZODDOK SV-8217-M", img: "image/3.png", price: 8599, category: "men" },
+            { title: "SVESTON SOLANO 7438-M", img: "image/4.png", price: 9459, category: "men" },
+            { title: "Sveston Elite SV-11297-M", img: "image/5.png", price: 7999, category: "men" },
+            { title: "SVESTON HAMMER SV-8224-M LTD", img: "image/6.png", price: 9459, category: "men" },
+            { title: "Centrix Automatic Diamonds ", img: "image/7.png", price: 3500, category: "women" },
+            { title: "Florence Diamonds", img: "image/8.png", price: 1900, category: "women" },
+            { title: "True Round Automatic", img: "image/9.png", price: 3400, category: "women" },
+            { title: "True Square Automatic", img: "image/10.png", price: 4050, category: "women" },
+            { title: "Captain Cook ", img: "image/11.png", price: 4950, category: "women" },
+            { title: "Centrix Automatic Diamonds", img: "image/12.png", price: 4000, category: "women" },
+            { title: "Oris", img: "image/13.png", price: 22499, category: "new" },
+            { title: "Tissot", img: "image/14.png", price: 10900, category: "new" },
+            { title: "Tissot", img: "image/15.png", price: 12499, category: "new" },
+            { title: "SHE-4554GY-5A", img: "image/18.png", price: 14099, category: "new" },
+            { title: "MTP-E340D-2AV", img: "image/16.png", price: 9499, category: "new" },
+            { title: "GBM-2100-1A", img: "image/17.png", price: 24000, category: "new" }
+        ];
+
+        // Function to get URL parameter
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to generate cards based on selected category
+        function generateCards(filteredWatches) {
+            const watchCardsContainer = document.getElementById('watch-cards');
+            watchCardsContainer.innerHTML = '';  // Clear any existing cards
+
+            filteredWatches.forEach(watch => {
+                const card = document.createElement('div');
+                card.className = 'col-md-4';  // Responsive column class
+
+                // Card content with Buy button and price included
+                card.innerHTML = `
+                <div class="card">
+                    <img src="${watch.img}" class="card-img-top" height="400" width="400" alt="${watch.title}">
+                    <div class="card-body">
+                        <h5 class="card-title">${watch.title}</h5>
+                        <p class="card-text">Price: ${watch.price}</p>
+                        <a href="product-page.html?title=${encodeURIComponent(watch.title)}&img=${encodeURIComponent(watch.img)}&price=${encodeURIComponent(watch.price)}&category=${watch.category}" class="button btn">Buy Now</a>
+                    </div>
+                </div>
+            `;
+                watchCardsContainer.appendChild(card);  // Add card to container
+            });
+        }
+
+        // Function to filter watches based on category
+        function filterWatches() {
+            const category = getUrlParameter('category') || 'all';
+            if (category === 'all') {
+                generateCards(watches);
+            } else {
+                const filteredWatches = watches.filter(watch => watch.category === category);
+                generateCards(filteredWatches);
+            }
+        }
+
+        // Filter watches on page load
+        filterWatches();
+    </script>
+
+
+</body>
+
+</html>

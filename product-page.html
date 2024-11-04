@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(0deg, #016003 0%, #000000 100%);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .button {
+            padding: 1.3em 3em;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            font-weight: 500;
+            color: #000;
+            background-color: #fff;
+            border: none;
+            border-radius: 45px;
+            box-shadow: 0px 8px 10px rgb(15, 77, 0);
+            transition: all 0.3s ease 0s;
+            cursor: pointer;
+            outline: none;
+
+        }
+
+        .button:hover {
+            background-color: #23c483;
+            box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+            color: #fff;
+            transform: translateY(-7px);
+        }
+
+        .button:active {
+            transform: translateY(-1px);
+        }
+
+        .product-image {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+        }
+
+        .product-details {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .product-price {
+            font-size: 20px;
+            color: #28a745;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #6c757d;
+        }
+
+        .btn-buy-now {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-buy-now:hover {
+            background-color: #333;
+        }
+        /* From Uiverse.io by EmmaxPlay */ 
+.card {
+width: 100%;
+height: auto;
+ margin: 0 auto;
+ background-color: white;
+ border-radius: 8px;
+ z-index: 1;
+ text-align: center;
+}
+
+.tools {
+ display: flex;
+ align-items: center;
+ padding: 9px;
+}
+
+.circle {
+ padding: 0 4px;
+}
+
+.box {
+ display: inline-block;
+ align-items: center;
+ width: 10px;
+ height: 10px;
+ padding: 1px;
+ border-radius: 50%;
+}
+
+.red {
+ background-color: #ff605c;
+}
+
+.yellow {
+ background-color: #ffbd44;
+}
+
+.green {
+ background-color: #00ca4e;
+}
+
+
+        /* From Uiverse.io by tiagoadag1203 */
+        .input {
+            max-width: 190px;
+            background-color: #1a1a1a;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            outline: none;
+            color: white;
+            box-shadow: -2px -2px 8px 1px gainsboro, 2px 2px 8px 1px white;
+            margin: 10px;
+        }
+
+        .input:focus {
+            animation: rotateShadow 2s infinite linear;
+        }
+
+        @keyframes rotateShadow {
+            0% {
+                box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff;
+            }
+
+            25% {
+                box-shadow: -2px 2px 8px 1px #aa00ff, 2px -2px 8px 1px #3700ff;
+            }
+
+            50% {
+                box-shadow: 2px 2px 8px 1px #aa00ff, -2px -2px 8px 1px #3700ff;
+            }
+
+            75% {
+                box-shadow: 2px -2px 8px 1px #aa00ff, -2px 2px 8px 1px #3700ff;
+            }
+
+            100% {
+                box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+               
+<div class="card">
+  <div class="tools">
+    <div class="circle">
+      <span class="red box"></span>
+    </div>
+    <div class="circle">
+      <span class="yellow box"></span>
+    </div>
+    <div class="circle">
+      <span class="green box"></span>
+    </div>
+  </div>
+  <div class="card__content">
+    <img alt="" class="product-image" id="productImage" height="500" width="500" />
+  </div>
+</div>
+                
+            </div>
+            <div class="col-md-6 product-details">
+                <h1 class="product-title" id="productTitle"></h1>
+                <p class="product-price" id="productPrice"></p>
+                <p id="totalPrice" class="product-price"></p>
+
+                <p>
+                <h5> Quantity :</h5>
+                <input id="quantity" class="input" min="1" type="number" value="1" onchange="updateTotalPrice()" />
+                </p>
+
+                <a href="product.html">
+                    <button class="btn button mt-3" onclick="goBack()">Back</button>
+                </a>
+                <button class="btn button mt-3" onclick="purchaseNow()">
+                    Confirm Purchase
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Function to display product details
+        function displayProductDetails() {
+            const title = getUrlParameter('title');
+            const price = getUrlParameter('price');
+            const image = getUrlParameter('img');
+
+            // Display title, price, and image
+            document.getElementById('productTitle').innerText = title;
+            document.getElementById('productPrice').innerText = `Price: ${price}`;
+            document.getElementById('productImage').src = image;
+        }
+
+        // Call the display function on page load
+        displayProductDetails();
+
+        function goBack() {
+            window.history.back();
+        }
+
+        function purchaseNow() {
+            const quantity = document.getElementById('quantity').value;
+            const title = document.getElementById('productTitle').innerText;
+            const price = document.getElementById('productPrice').innerText;
+
+            console.log(`Purchase confirmed for ${quantity} items of ${title} with ${price}`);
+
+            // Redirect to card.html with product details in query parameters
+            window.location.href = `card.html?title=${encodeURIComponent(title)}&quantity=${quantity}&price=${encodeURIComponent(price)}`;
+        }
+
+    </script>
+
+</body>
+
+</html>
